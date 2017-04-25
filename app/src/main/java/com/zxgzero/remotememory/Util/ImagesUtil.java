@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 
 import com.zxgzero.remotememory.R;
-import com.zxgzero.remotememory.activity.PuzzleMain;
+import com.zxgzero.remotememory.activity.PuzzleDetailActivity;
 import com.zxgzero.remotememory.bean.PicItem;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class ImagesUtil {
             }
         }
         //保存最后一个图片在拼图完成时填充
-        PuzzleMain.mLastBitmap = bitmapItems.get(type*type-1);
+        PuzzleDetailActivity.mLastBitmap = bitmapItems.get(type*type-1);
         //设置最后一个为空的Item
         bitmapItems.remove(type*type-1);
         GameUtil.mItemBeans.remove(type*type-1);

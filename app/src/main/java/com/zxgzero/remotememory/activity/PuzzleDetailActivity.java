@@ -34,7 +34,7 @@ import java.util.TimerTask;
 /**
  * Created by Administrator on 2016/5/28 0028.
  */
-public class PuzzleMain extends Activity implements View.OnClickListener {
+public class PuzzleDetailActivity extends Activity implements View.OnClickListener {
 
     //显示步数
     private TextView mPuzzleStepCounts;
@@ -97,7 +97,7 @@ public class PuzzleMain extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.puzzle_main);
+        setContentView(R.layout.aty_puzzledetail);
         //获取选择的图片
         Bitmap picSelectedTemp;
         mResId = getIntent().getExtras().getInt("picSelectedID");
@@ -138,7 +138,7 @@ public class PuzzleMain extends Activity implements View.OnClickListener {
                         mBitmapItemLists.add(mLastBitmap);
                         //通知GridView更改UI
                         mAdapter.notifyDataSetChanged();
-                        Toast.makeText(PuzzleMain.this,"拼图成功！！！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PuzzleDetailActivity.this,"拼图成功！！！",Toast.LENGTH_SHORT).show();
                         //设置成功后，GridView不可点击
                         mGvPuzzleMainDetail.setEnabled(false);
                         //计时器停止计时
@@ -172,7 +172,7 @@ public class PuzzleMain extends Activity implements View.OnClickListener {
      */
     private void generateGame() {
         // 切图 获取初始拼图数据拼图 正常顺序
-        new ImagesUtil().createInitBitmaps(TYPE, mPicSelected, PuzzleMain.this);
+        new ImagesUtil().createInitBitmaps(TYPE, mPicSelected, PuzzleDetailActivity.this);
 
         //生成随机数据
         GameUtil.getPuzzleGenerator();
@@ -239,7 +239,7 @@ public class PuzzleMain extends Activity implements View.OnClickListener {
      */
     private void addImgView() {
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.rl_puzzle_main_main_layout);
-        mImageView = new ImageView(PuzzleMain.this);
+        mImageView = new ImageView(PuzzleDetailActivity.this);
         mImageView.setImageBitmap(mPicSelected);
         int x = (int) (mPicSelected.getWidth() * 0.9f);
         int y = (int) (mPicSelected.getHeight() * 0.9f);
@@ -272,14 +272,14 @@ public class PuzzleMain extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             //返回按钮点击事件
             case R.id.btn_puzzle_main_back:
-                PuzzleMain.this.finish();
+                PuzzleDetailActivity.this.finish();
                 break;
             //原图按钮点击事件
             case R.id.btn_puzzle_main_img:
                 Animation animShow = AnimationUtils.loadAnimation(
-                        PuzzleMain.this,R.anim.image_show_anim);
+                        PuzzleDetailActivity.this,R.anim.image_show_anim);
                 Animation animHide = AnimationUtils.loadAnimation(
-                        PuzzleMain.this,R.anim.image_hide_anim);
+                        PuzzleDetailActivity.this,R.anim.image_hide_anim);
                 if (mIsShowImg) {
                     mImageView.startAnimation(animHide);
                     mImageView.setVisibility(View.GONE);

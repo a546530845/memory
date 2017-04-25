@@ -1,6 +1,6 @@
     package com.zxgzero.remotememory.Util;
 
-    import com.zxgzero.remotememory.activity.PuzzleMain;
+    import com.zxgzero.remotememory.activity.PuzzleDetailActivity;
     import com.zxgzero.remotememory.bean.PicItem;
 
     import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class GameUtil {
         int index = 0;
         //随机打乱顺序
         for (int i = 0; i < mItemBeans.size(); i++) {
-            index = (int) (Math.random() * PuzzleMain.TYPE * PuzzleMain.TYPE);
+            index = (int) (Math.random() * PuzzleDetailActivity.TYPE * PuzzleDetailActivity.TYPE);
             swapItems(mItemBeans.get(index), GameUtil.mBlankPicItem);
         }
         List<Integer> data = new ArrayList<>();
@@ -81,7 +81,7 @@ public class GameUtil {
             return getInversion(data) % 2 == 0;
         } else {
             //如果序列的宽度为偶数
-            if (((blankId - 1) / PuzzleMain.TYPE) % 2 == 1) {
+            if (((blankId - 1) / PuzzleDetailActivity.TYPE) % 2 == 1) {
                 //从下往上数，空格位于奇数行
                 return getInversion(data) % 2 == 0;
             } else {
@@ -98,7 +98,7 @@ public class GameUtil {
      * @return
      */
     public static boolean isMoveable(int position) {
-        int type = PuzzleMain.TYPE;
+        int type = PuzzleDetailActivity.TYPE;
         //获取空格Item
         int blankId = GameUtil.mBlankPicItem.getmItemId() - 1;
         //不同行相差type个id数，可以移动（上下位置可以移动）
@@ -144,7 +144,7 @@ public class GameUtil {
                     (picItem.getmItemId()) == picItem.getmBitmapId()) {
                 continue;
             } else if (picItem.getmBitmapId() == 0 &&
-                    picItem.getmItemId() == PuzzleMain.TYPE*PuzzleMain.TYPE) {
+                    picItem.getmItemId() == PuzzleDetailActivity.TYPE* PuzzleDetailActivity.TYPE) {
                 continue;
             } else {
                 return false;

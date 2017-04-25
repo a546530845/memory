@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     showDialogCustom();
                 } else {
                     //否则默认选择图片
-                    Intent intent = new Intent(MainActivity.this, PuzzleMain.class);
+                    Intent intent = new Intent(MainActivity.this, PuzzleDetailActivity.class);
                     intent.putExtra("picSelectedID", mResPicId[position]);
                     intent.putExtra("mType", mType);
                     startActivity(intent);
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (cursor != null) {
                     cursor.moveToFirst();
                     String imagePath = cursor.getString(cursor.getColumnIndex("_data"));
-                    Intent intent = new Intent(MainActivity.this, PuzzleMain.class);
+                    Intent intent = new Intent(MainActivity.this, PuzzleDetailActivity.class);
                     intent.putExtra(MY_PICPATH, imagePath);
                     intent.putExtra("mType", mType);
                     cursor.close();
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             } else if (requestCode == RESULT_CAMERA) {
                 //相机
-                Intent intent = new Intent(MainActivity.this, PuzzleMain.class);
+                Intent intent = new Intent(MainActivity.this, PuzzleDetailActivity.class);
                 intent.putExtra(MY_PICPATH, TEMP_IMAGE_PATH);
                 intent.putExtra("mType", mType);
                 startActivity(intent);
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //显示难度等级
         degreeSelect = (TextView) findViewById(R.id.tv_puzzle_main_type_selected);
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mPopupView = mInflater.inflate(R.layout.puzzle_main_selected, null);
+        mPopupView = mInflater.inflate(R.layout.puzzle_type, null);
 
         mType1 = (TextView) mPopupView.findViewById(R.id.id_difficulty_type1);
         mType2 = (TextView) mPopupView.findViewById(R.id.id_difficulty_type2);

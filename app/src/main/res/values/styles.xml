@@ -15,4 +15,12 @@
         <item name="android:textSize">@dimen/text_btn</item>
     </style>
 
+
+    <!--全局设定-->
+    <style name="my_notitle" parent="Theme.AppCompat.Light.NoActionBar"></style>
+    <!--theme全屏-->
+    <style name="fullscreen" parent="my_notitle">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>
